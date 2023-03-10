@@ -1,0 +1,42 @@
+{
+  "name": "zhconver",
+  "version": "0.0.1",
+  "description": "Convert between Simplified Chinese and Traditional Chinese",
+  "type": "module",
+  "main": "dist/zhconver.cjs",
+  "module": "dist/zhconver.mjs",
+  "jsdelivr": "dist/zhconver.js",
+  "scripts": {
+    "test": "vitest",
+    "build": "node build.cjs && rollup -c",
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint --fix . && prettier --check --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CreateWheel/zhconver.git"
+  },
+  "keywords": [
+    "Chinese",
+    "convert",
+    "Simplified Chinese",
+    "Traditional Chinese"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Lete114 <me@imlete.cn>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CreateWheel/zhconver/issues"
+  },
+  "homepage": "https://github.com/CreateWheel/zhconver#readme",
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "prettier": "^2.8.4",
+    "rollup": "^3.19.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "vitest": "^0.29.2"
+  }
+}
