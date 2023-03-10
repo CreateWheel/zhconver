@@ -6,7 +6,7 @@ Convert between Simplified Chinese and Traditional Chinese
 - **Support for running in browsers and node.**
 - Support for modifying conversion characters.
 - Support Type Tips.
-- Small volume ([zhconver](https://packagephobia.com/result?p=zhconver) 15~20kB).
+- Small volume ( 15~20kB ).
 
 ## Install
 
