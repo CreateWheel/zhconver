@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync } = require('fs')
 
-const data = JSON.parse(readFileSync('font.json', { encoding: 'utf8' }))
+const data = JSON.parse(readFileSync('mapper.json', { encoding: 'utf8' }))
 
 let CN = 'export const CN = "'
 let TW = 'export const TW = "'
