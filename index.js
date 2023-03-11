@@ -1,12 +1,12 @@
-import { CN, TW } from './data'
-const cn2twMap = new Map()
-const tw2cnMap = new Map()
-const cnLen = CN.length
-for (let i = 0; i < cnLen; i++) {
-  const cn = CN[i]
-  const tw = TW[i]
-  cn2twMap.set(cn, tw)
-  tw2cnMap.set(tw, cn)
+import { simplified, traditional } from './data'
+const sMap = new Map()
+const tMap = new Map()
+const sLen = simplified.length
+for (let i = 0; i < sLen; i++) {
+  const s = simplified[i]
+  const t = traditional[i]
+  sMap.set(s, t)
+  tMap.set(t, s)
 }
 
 /**
@@ -29,13 +29,13 @@ function convert(map, chars) {
  * Simplified Chinese to Traditional Chinese
  * @param {string} chars The string to be converted
  */
-export const cn2tw = (chars) => convert(cn2twMap, chars)
+export const s2t = (chars) => convert(sMap, chars)
 
 /**
  * Traditional Chinese to Simplified Chinese
  * @param {string} chars The string to be converted
  */
-export const tw2cn = (chars) => convert(tw2cnMap, chars)
+export const t2s = (chars) => convert(tMap, chars)
 
 /**
  * Add or modify existing simplified or traditional Chinese characters
@@ -49,13 +49,13 @@ export const tw2cn = (chars) => convert(tw2cnMap, chars)
  *  ]
  *
  * set(mapper)
- * console.log(cn2tw('我最喜欢吃的水果是火龙果'))
+ * console.log(s2t('我最喜欢吃的水果是火龙果'))
  * // => '我最喜歡吃的💧果是🔥🐉果'
  * ```
  */
 export const set = (mapper) => {
   for (const [cn, tw] of mapper) {
-    cn2twMap.set(cn, tw)
-    tw2cnMap.set(tw, cn)
+    sMap.set(cn, tw)
+    tMap.set(tw, cn)
   }
 }

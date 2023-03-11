@@ -23,28 +23,28 @@ browsers
 CommonJS
 
 ```js
-const { cn2tw, tw2cn, set } = require('zhconver')
+const { s2t, t2s, set } = require('zhconver')
 ```
 
 ES Modules
 
 ```js
-import { cn2tw, tw2cn, set } from 'zhconver'
+import { s2t, t2s, set } from 'zhconver'
 ```
 
 ## Usage
 
-### cn2tw
+### s2t
 
 ```js
-cn2tw('这是一段简体字')
+s2t('这是一段简体字')
 // => '這是壹段簡體字'
 ```
 
-### tw2cn
+### t2s
 
 ```js
-tw2cn('這是壹段簡體字')
+t2s('這是壹段簡體字')
 // => '这是一段简体字'
 ```
 
@@ -57,6 +57,6 @@ const mapper = [
   ['龙', '🐉']
 ]
 set(mapper)
-console.log(cn2tw('我最喜欢吃的水果是火龙果'))
+console.log(s2t('我最喜欢吃的水果是火龙果'))
 // => '我最喜歡吃的💧果是🔥🐉果'
 ```

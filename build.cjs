@@ -2,17 +2,17 @@ const { readFileSync, writeFileSync } = require('fs')
 
 const data = JSON.parse(readFileSync('mapper.json', { encoding: 'utf8' }))
 
-let CN = 'export const CN = "'
-let TW = 'export const TW = "'
+let simplified = 'export const simplified = "'
+let traditional = 'export const traditional = "'
 
 for (const [key, value] of Object.entries(data)) {
   if (key === value) continue
-  CN += key
-  TW += value
+  simplified += key
+  traditional += value
 }
-CN += '"'
-TW += '"'
+simplified += '"'
+traditional += '"'
 
-const code = CN + '\n' + TW
+const code = simplified + '\n' + traditional
 
 writeFileSync('data.js', code)
