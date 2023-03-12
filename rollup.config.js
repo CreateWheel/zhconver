@@ -6,7 +6,7 @@ const pkg = JSON.parse(readFileSync('package.json', { encoding: 'utf8' }))
 const plugins = [del({ targets: 'dist/*' })]
 
 export default {
-  input: 'index.js',
+  input: 'src/index.js',
   plugins,
   output: [
     {

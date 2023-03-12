@@ -8,9 +8,9 @@
   "jsdelivr": "dist/zhconver.js",
   "scripts": {
     "test": "vitest",
-    "build": "node build.cjs && rollup -c",
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint --fix . && prettier --check --write ."
+    "build": "node src/build.cjs && rollup -c",
+    "lint": "eslint src && prettier --check src",
+    "lint:fix": "eslint --fix src && prettier --check --write src"
   },
   "repository": {
     "type": "git",

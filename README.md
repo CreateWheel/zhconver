@@ -39,6 +39,17 @@ import { s2t, t2s, set } from 'zhconver'
 ```js
 s2t('这是一段简体字')
 // => '這是壹段簡體字'
+
+// Use dictionary tree query replacement
+const mapper = [
+  ['电视', '電視'],
+  ['电梯', '電梯'],
+  ['公交车', '公車'],
+  ['公文包', '公事包']
+]
+set(mapper)
+s2t('我在坐公交车', true)
+// => '我在坐公車'
 ```
 
 ### t2s
@@ -46,6 +57,18 @@ s2t('这是一段简体字')
 ```js
 t2s('這是壹段簡體字')
 // => '这是一段简体字'
+
+// Use dictionary tree query replacement
+
+const mapper = [
+  ['电视', '電視'],
+  ['电梯', '電梯'],
+  ['公交车', '公車'],
+  ['公文包', '公事包']
+]
+set(mapper)
+t2s('我在坐公車', true)
+// => '我在坐公交车'
 ```
 
 ### set
