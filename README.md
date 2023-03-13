@@ -59,7 +59,6 @@ t2s('這是壹段簡體字')
 // => '这是一段简体字'
 
 // Use dictionary tree query replacement
-
 const mapper = [
   ['电视', '電視'],
   ['电梯', '電梯'],
