@@ -1,12 +1,11 @@
-const { readFileSync, writeFileSync } = require('fs')
+const { writeFileSync } = require('fs')
 const { join } = require('path')
-
-const data = JSON.parse(readFileSync(join(__dirname, 'mapper.json'), { encoding: 'utf8' }))
+const mapper = require('./mapper.json')
 
 let simplified = 'export const simplified = "'
 let traditional = 'export const traditional = "'
 
-for (const [key, value] of Object.entries(data)) {
+for (const [key, value] of Object.entries(mapper)) {
   if (key === value) continue
   simplified += key
   traditional += value
@@ -16,4 +15,4 @@ traditional += '"'
 
 const code = simplified + '\n' + traditional
 
-writeFileSync(join(__dirname, 'data.js'), code)
+writeFileSync(join(__dirname, 'src/data.js'), code)

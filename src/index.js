@@ -32,6 +32,7 @@ for (let i = 0; i < sLen; i++) {
  * set(mapper)
  * console.log(s2t('我最喜欢吃的水果是香蕉和草莓', true))
  * // => '我最喜歡吃的水果是🍌和🍓'
+ * ```
  */
 export const s2t = (chars, isTrie) => convert(sTrie, sMap, chars, isTrie)
 
@@ -52,6 +53,7 @@ export const s2t = (chars, isTrie) => convert(sTrie, sMap, chars, isTrie)
  * set(mapper)
  * console.log(s2t('我最歡欢吃的水果是香蕉和草莓', true))
  * // => '我最喜喜吃的水果是🍌和🍓'
+ * ```
  */
 export const t2s = (chars, isTrie) => convert(tTrie, tMap, chars, isTrie)
 

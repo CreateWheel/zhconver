@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { s2t, t2s, set } from './index'
+import { s2t, t2s, set } from '../src/index'
 
 describe('hanconvert', () => {
   it('s2t function', () => {

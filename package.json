@@ -3,14 +3,28 @@
   "version": "0.0.4",
   "description": "Convert between Simplified Chinese and Traditional Chinese",
   "type": "module",
-  "main": "dist/zhconver.cjs",
-  "module": "dist/zhconver.mjs",
-  "jsdelivr": "dist/zhconver.js",
+  "main": "./dist/zhconver.cjs",
+  "module": "./dist/zhconver.mjs",
+  "jsdelivr": "./dist/zhconver.js",
   "scripts": {
     "test": "vitest",
-    "build": "node src/build.cjs && rollup -c",
+    "build": "node build.cjs && rollup -c",
     "lint": "eslint src && prettier --check src",
     "lint:fix": "eslint --fix src && prettier --check --write src"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./utils": {
+      "import": "./dist/esm/utils.mjs",
+      "require": "./dist/cjs/utils.cjs"
+    },
+    "./data": {
+      "import": "./dist/esm/data.mjs",
+      "require": "./dist/cjs/data.cjs"
+    }
   },
   "repository": {
     "type": "git",
