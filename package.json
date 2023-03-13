@@ -1,6 +1,6 @@
 {
   "name": "zhconver",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Convert between Simplified Chinese and Traditional Chinese",
   "type": "module",
   "main": "./dist/zhconver.cjs",
