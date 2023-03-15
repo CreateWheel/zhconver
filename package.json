@@ -2,10 +2,8 @@
   "name": "zhconver",
   "version": "0.0.5",
   "description": "Convert between Simplified Chinese and Traditional Chinese",
-  "type": "module",
-  "main": "./dist/zhconver.cjs",
-  "module": "./dist/zhconver.mjs",
-  "jsdelivr": "./dist/zhconver.js",
+  "main": "./dist/cjs/full.cjs",
+  "module": "./dist/esm/full.mjs",
   "scripts": {
     "test": "vitest",
     "build": "node build.cjs && rollup -c",
@@ -14,16 +12,56 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs"
+      "import": "./dist/esm/full.mjs",
+      "require": "./dist/cjs/full.cjs"
+    },
+    "./lite": {
+      "import": "./dist/esm/full.lite.mjs",
+      "require": "./dist/cjs/full.lite.cjs"
     },
     "./utils": {
-      "import": "./dist/esm/utils.mjs",
-      "require": "./dist/cjs/utils.cjs"
+      "import": "./dist/esm/lib/utils.mjs",
+      "require": "./dist/cjs/lib/utils.cjs"
     },
     "./data": {
-      "import": "./dist/esm/data.mjs",
-      "require": "./dist/cjs/data.cjs"
+      "import": "./dist/esm/lib/data.mjs",
+      "require": "./dist/cjs/lib/d ata.cjs"
+    },
+    "./s2t": {
+      "improt": "./dist/esm/s2t.mjs",
+      "require": "./dist/cjs/s2t.cjs"
+    },
+    "./s2hk": {
+      "improt": "./dist/esm/s2hk.mjs",
+      "require": "./dist/cjs/s2hk.cjs"
+    },
+    "./s2tw": {
+      "improt": "./dist/esm/s2tw.mjs",
+      "require": "./dist/cjs/s2tw.cjs"
+    },
+    "./s2twp": {
+      "improt": "./dist/esm/s2twp.mjs",
+      "require": "./dist/cjs/s2twp.cjs"
+    },
+    "./s2jp": {
+      "improt": "./dist/esm/s2jp.mjs",
+      "require": "./dist/cjs/s2jp.cjs"
+    },
+    "./hk2s": {
+      "improt": "./dist/esm/hk2s.mjs",
+      "require": "./dist/cjs/hk2s.cjs"
+    },
+    "./tw2s": {
+      "improt": "./dist/esm/tw2s.mjs",
+      "require": "./dist/cjs/tw2s.cjs"
+    },
+    "./twp2s": {
+      "improt": "./dist/esm/twp2s.mjs",
+      "require": "./dist/cjs/twp2s.cjs"
+    },
+    "./jp2s": {
+      "improt": "./dist/esm/jp2s.mjs",
+      "require": "./dist/cjs/jp2s.cjs"
     }
   },
   "repository": {

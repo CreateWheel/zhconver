@@ -6,7 +6,7 @@ export const ArrayFrom = Array.from
 
 class TrieNode {
   constructor() {
-    this.map = new Map()
+    this.tree = new Map()
     this.v = ''
     this.end = false
   }
@@ -27,8 +27,8 @@ export class Trie {
     let node = this.root
     for (let i = 0; i < array.length; i++) {
       const char = array[i]
-      if (!node.map.has(char)) node.map.set(char, new TrieNode())
-      node = node.map.get(char)
+      if (!node.tree.has(char)) node.tree.set(char, new TrieNode())
+      node = node.tree.get(char)
     }
     node.end = true
     node.k = key
@@ -44,14 +44,15 @@ export class Trie {
   search(text, startIndex = 0) {
     let node = this.root
     const textLen = text.length
+    const phrases = []
     for (let i = startIndex; i < textLen; i++) {
       const char = text[i]
-      const _node = node.map.get(char)
-      if (!_node) continue
+      const _node = node.tree.get(char)
+      if (!_node) return phrases.pop() || [startIndex]
       node = _node
-      if (node.end) return [i, node.k, node.v]
+      if (node.end) phrases.push([i, node.k, node.v])
     }
-    return [startIndex]
+    return phrases.pop() || [startIndex]
   }
 }
 
@@ -66,22 +67,12 @@ export const replaceAll = (chars, searchValue, replaceValue) =>
   chars.replace(new RegExp(searchValue, 'g'), replaceValue)
 
 /**
- * Convert
- * @param { Trie } trieInstance Simplified Chinese and Traditional Chinese mapping table for words or phrases
- * @param { Map<string,string> } map Simplified Chinese and Traditional Chinese mapping table for Chinese characters
- * @param { string } chars The string to be converted
- * @param { boolean } isTrie Whether to use dictionary tree query replacement
- */
-export const convert = (trieInstance, map, chars, isTrie) =>
-  isTrie ? stringCanvert(map, trieCanvert(trieInstance, chars)) : stringCanvert(map, chars)
-
-/**
  * Using dictionary tree conversion
- * @param { Trie } instance Dictionary tree instance
  * @param { string } chars The string to be converted
+ * @param { Trie } instance Dictionary tree instance
  * @returns The converted string
  */
-export function trieCanvert(instance, chars) {
+export function trieCanvert(chars, instance) {
   const array = ArrayFrom(chars)
   const wordLen = array.length
   for (let i = 0; i < wordLen; i++) {
@@ -94,16 +85,26 @@ export function trieCanvert(instance, chars) {
 }
 
 /**
- * String conversion
- * @param { Map<string,string> } map String Mapping Table
- * @param { string } chars The string to be converted
- * @returns The converted string
+ *
+ * @param { Trie } trie
+ * @param { { [key: string]: [string, string] } } dicts 
  */
-export function stringCanvert(map, chars) {
-  const set = new Set(chars)
-  set.forEach((item) => {
-    const char = map.get(item)
-    if (char) chars = replaceAll(chars, item, char)
-  })
-  return chars
+export function loadDict(trie, dicts) {
+  for (const item in dicts) {
+    let [dictKey, dictValue] = dicts[item]
+
+    dictKey = dictKey.split(1)
+    dictValue = dictValue.split(1)
+    if (dictKey.length < 2 || dictValue.length < 2) {
+      dictKey = dictKey[0]
+      dictValue = dictValue[0]
+    }
+    const dictKeyLen = ArrayFrom(dictKey).length
+
+    for (let i = 0; i < dictKeyLen; i++) {
+      const _key_ = Array.isArray(dictKey) ? dictKey[i] : ArrayFrom(dictKey)[i]
+      const _value_ = Array.isArray(dictValue) ? dictValue[i] : ArrayFrom(dictValue)[i]
+      trie.insert(_key_, _value_)
+    }
+  }
 }
