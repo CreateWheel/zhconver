@@ -46,10 +46,12 @@ describe('Trie', () => {
     const trie = new Trie()
     trie.add('aaa', 'bbb')
 
+    // eslint-disable-next-line camelcase
     const delete_aaa1 = trie.delete('aaa1')
     expect(trie.root.map.size).eq(1)
     expect(delete_aaa1).toBe(false)
 
+    // eslint-disable-next-line camelcase
     const delete_aaa = trie.delete('aaa')
     expect(trie.root.map.size).eq(0)
     expect(delete_aaa).toBe(true)
@@ -84,6 +86,7 @@ describe('zhconver', () => {
     expect(t2s(charsT, trie)).eq(charsS)
   })
 
+  // eslint-disable-next-line max-statements
   it('more custom Trie', () => {
     const trie = new Trie()
     trie.add('水', '💧')

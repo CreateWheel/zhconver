@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 // To avoid having a single text or character longer than 1
 // e.g.: emoji symbols are generally 2 in length
 // A: What will happen if we handle it this way?
 // B: If it is not handled, when the text is obtained after the for loop based on the index (arr[i]), then the text will become a garbled symbol
+/* eslint-enable max-len */
 export const ArrayFrom = Array.from
 
 export class TrieNode {

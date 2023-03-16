@@ -1,6 +1,17 @@
+// eslint-disable-next-line no-unused-vars
 import { ArrayFrom, Trie } from './trie'
 export { Trie } from './trie'
 
+/**
+ * replaceAll polyfill
+ * @param { string } chars String to replace
+ * @param { string } searchValue An object that supports searching for and replacing matches within a string
+ * @param { string } replaceValue The replacement text
+ * @returns
+ */
+const replaceAll = (chars, searchValue, replaceValue) => chars.replace(new RegExp(searchValue, 'g'), replaceValue)
+
+/* eslint-disable max-len */
 /**
  * Using dictionary tree conversion
  * @param { string } chars The string to be converted
@@ -16,6 +27,7 @@ export { Trie } from './trie'
  * // => '我最喜欢吃的水果是🍌和🍓'
  * ```
  */
+/* eslint-enable max-len */
 export function conver(chars, instance) {
   const array = ArrayFrom(chars)
   const arrayLen = array.length
@@ -32,12 +44,3 @@ export function conver(chars, instance) {
 
   return chars
 }
-
-/**
- * replaceAll polyfill
- * @param { string } chars String to replace
- * @param { string } searchValue An object that supports searching for and replacing matches within a string
- * @param { string } replaceValue The replacement text
- * @returns
- */
-const replaceAll = (chars, searchValue, replaceValue) => chars.replace(new RegExp(searchValue, 'g'), replaceValue)
