@@ -15,4 +15,4 @@ traditional += '"'
 
 const code = simplified + '\n' + traditional
 
-writeFileSync(join(__dirname, 'src/data.js'), code)
+writeFileSync(join(__dirname, 'src/dict.js'), code)

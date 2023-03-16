@@ -17,19 +17,51 @@ npm install zhconver --save
 browsers
 
 ```html
+<!-- 15~20kB: This js file contains simplified and traditional Chinese mapping table -->
 <script src="https://cdn.jsdelivr.net/npm/zhconver/dist/zhconver.js"></script>
+<script>
+  console.log(zhconver)
+  // => { Trie, conver, s2t, t2s }
+</script>
+<!-- Or ES Module -->
+<script type="module">
+  import * as zhconver from 'https://cdn.jsdelivr.net/npm/zhconver/dist/esm/zhconver.mjs'
+  console.log(zhconver)
+  // => { Trie, conver, s2t, t2s }
+</script>
+
+<!-- 1kB: If you want to customize the simplified and traditional mapping tables, you can introduce js files that contain only processing functions -->
+<script src="https://cdn.jsdelivr.net/npm/zhconver/dist/conver.js"></script>
+<script>
+  console.log(conver)
+  // => { Trie, conver }
+</script>
+<!-- Or ES Module -->
+<script type="module">
+  import * as conver from 'https://cdn.jsdelivr.net/npm/zhconver/dist/esm/conver.mjs'
+  console.log(conver)
+  // => { Trie, conver }
+</script>
 ```
 
 CommonJS
 
 ```js
-const { s2t, t2s, set } = require('zhconver')
+// No Simplified and Traditional Chinese mapping table
+const { Trie, conver } = require('zhconver')
+
+// With Simplified and Traditional Chinese Mapping Table
+const { Trie, conver, s2t, t2s } = require('zhconver/zhconver')
 ```
 
 ES Modules
 
 ```js
-import { s2t, t2s, set } from 'zhconver'
+// No Simplified and Traditional Chinese mapping table
+import { Trie, conver } from 'zhconver'
+
+// With Simplified and Traditional Chinese Mapping Table
+import { Trie, conver, s2t, t2s } from 'zhconver/zhconver'
 ```
 
 ## Usage
@@ -37,48 +69,24 @@ import { s2t, t2s, set } from 'zhconver'
 ### s2t
 
 ```js
-s2t('这是一段简体字')
-// => '這是壹段簡體字'
-
-// Use dictionary tree query replacement
-const mapper = [
-  ['电视', '電視'],
-  ['电梯', '電梯'],
-  ['公交车', '公車'],
-  ['公文包', '公事包']
-]
-set(mapper)
-s2t('我在坐公交车', true)
-// => '我在坐公車'
+console.log(s2t('这是一段简体字'))
+// => '是壹段簡體字'
 ```
 
 ### t2s
 
 ```js
-t2s('這是壹段簡體字')
+console.log(t2s('這是壹段簡體字'))
 // => '这是一段简体字'
-
-// Use dictionary tree query replacement
-const mapper = [
-  ['电视', '電視'],
-  ['电梯', '電梯'],
-  ['公交车', '公車'],
-  ['公文包', '公事包']
-]
-set(mapper)
-t2s('我在坐公車', true)
-// => '我在坐公交车'
 ```
 
-### set
+### conver + Trie
 
 ```js
-const mapper = [
-  ['水', '💧'],
-  ['火', '🔥'],
-  ['龙', '🐉']
-]
-set(mapper)
-console.log(s2t('我最喜欢吃的水果是火龙果'))
-// => '我最喜歡吃的💧果是🔥🐉果'
+const trie = new Trie();
+trie.insert("香蕉", "🍌");
+trie.insert("草莓", "🍓");
+trie.insert("芒果", "🥭");
+console.log(conver("我最喜欢吃的水果是香蕉和草莓", trie));
+// => '我最喜欢吃的水果是🍌和🍓'
 ```
