@@ -70,7 +70,7 @@ import { Trie, conver, s2t, t2s } from 'zhconver/zhconver'
 
 ```js
 console.log(s2t('这是一段简体字'))
-// => '是壹段簡體字'
+// => '這是壹段簡體字'
 ```
 
 ### t2s
