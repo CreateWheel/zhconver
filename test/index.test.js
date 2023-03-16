@@ -2,7 +2,61 @@ import { describe, expect, it } from 'vitest'
 
 import { s2t, t2s, Trie } from '../src/zhconver'
 
-describe('hanconvert', () => {
+describe('Trie', () => {
+  it('set', () => {
+    const trie = new Trie()
+    trie.add('aaa', 'bbb')
+    trie.set('aaa', 'aaa')
+
+    const [index, key, value] = trie.find('aaa')
+
+    expect(index).eq(2)
+    expect(key).eq('aaa')
+    expect(value).eq('aaa')
+  })
+
+  it('add', () => {
+    const trie = new Trie()
+    trie.add('aaa', 'bbb')
+
+    const [index, key, value] = trie.find('aaa')
+    expect(index).eq(2)
+    expect(key).eq('aaa')
+    expect(value).eq('bbb')
+  })
+
+  it('find', () => {
+    const trie = new Trie()
+    trie.add('aaa', 'bbb')
+
+    const [index, key, value] = trie.find('aaa')
+    expect(index).eq(2)
+    expect(key).eq('aaa')
+    expect(value).eq('bbb')
+
+    trie.set('aaa', 'aaa')
+    const [sindex, skey, svalue] = trie.find('aaa')
+
+    expect(sindex).eq(2)
+    expect(skey).eq('aaa')
+    expect(svalue).eq('aaa')
+  })
+
+  it('delete', () => {
+    const trie = new Trie()
+    trie.add('aaa', 'bbb')
+
+    const delete_aaa1 = trie.delete('aaa1')
+    expect(trie.root.map.size).eq(1)
+    expect(delete_aaa1).toBe(false)
+
+    const delete_aaa = trie.delete('aaa')
+    expect(trie.root.map.size).eq(0)
+    expect(delete_aaa).toBe(true)
+  })
+})
+
+describe('zhconver', () => {
   it('s2t function', () => {
     const charsS = '这是一段简体字'
     const charsT = '這是壹段簡體字'
