@@ -7,8 +7,6 @@ parserOptions:
   ecmaVersion: latest
   sourceType: module
 
-ignore: [data.js, dist]
-
 rules:
   # off   OR 0
   # warn  OR 1
