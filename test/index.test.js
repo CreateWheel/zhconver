@@ -17,12 +17,12 @@ describe('hanconvert', () => {
 
   it('custom Trie', () => {
     const trie = new Trie()
-    trie.insert('水', '💧')
-    trie.insert('火', '🔥')
-    trie.insert('龙', '🐉')
-    trie.insert('💧', '水')
-    trie.insert('🔥', '火')
-    trie.insert('🐉', '龙')
+    trie.add('水', '💧')
+    trie.add('火', '🔥')
+    trie.add('龙', '🐉')
+    trie.add('💧', '水')
+    trie.add('🔥', '火')
+    trie.add('🐉', '龙')
 
     const charsS = '我最喜欢吃的水果是火龙果'
     const charsT = '我最喜欢吃的💧果是🔥🐉果'
@@ -32,25 +32,25 @@ describe('hanconvert', () => {
 
   it('more custom Trie', () => {
     const trie = new Trie()
-    trie.insert('水', '💧')
-    trie.insert('火', '🔥')
-    trie.insert('龙', '🐉')
-    trie.insert('电视', '電視')
-    trie.insert('电梯', '電梯')
-    trie.insert('出租车', '計程車')
-    trie.insert('公交车', '公車')
-    trie.insert('公文包', '公事包')
-    trie.insert('公共场所', '公共場所')
+    trie.add('水', '💧')
+    trie.add('火', '🔥')
+    trie.add('龙', '🐉')
+    trie.add('电视', '電視')
+    trie.add('电梯', '電梯')
+    trie.add('出租车', '計程車')
+    trie.add('公交车', '公車')
+    trie.add('公文包', '公事包')
+    trie.add('公共场所', '公共場所')
 
-    trie.insert('💧', '水')
-    trie.insert('🔥', '火')
-    trie.insert('🐉', '龙')
-    trie.insert('電視', '电视')
-    trie.insert('電梯', '电梯')
-    trie.insert('計程車', '出租车')
-    trie.insert('公車', '公交车')
-    trie.insert('公事包', '公文包')
-    trie.insert('公共場所', '公共场所')
+    trie.add('💧', '水')
+    trie.add('🔥', '火')
+    trie.add('🐉', '龙')
+    trie.add('電視', '电视')
+    trie.add('電梯', '电梯')
+    trie.add('計程車', '出租车')
+    trie.add('公車', '公交车')
+    trie.add('公事包', '公文包')
+    trie.add('公共場所', '公共场所')
 
     const TVS = '电电视'
     const TVT = '电電視'

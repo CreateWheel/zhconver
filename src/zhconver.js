@@ -13,8 +13,8 @@ const sLen = simplifiedArray.length
 for (let i = 0; i < sLen; i++) {
   const s = simplifiedArray[i]
   const t = traditionalArray[i]
-  Strie.insert(s, t)
-  Ttrie.insert(t, s)
+  Strie.add(s, t)
+  Ttrie.add(t, s)
 }
 
 /**

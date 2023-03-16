@@ -83,10 +83,10 @@ console.log(t2s('這是壹段簡體字'))
 ### conver + Trie
 
 ```js
-const trie = new Trie();
-trie.insert("香蕉", "🍌");
-trie.insert("草莓", "🍓");
-trie.insert("芒果", "🥭");
-console.log(conver("我最喜欢吃的水果是香蕉和草莓", trie));
+const trie = new Trie()
+trie.add('香蕉', '🍌')
+trie.add('草莓', '🍓')
+trie.add('芒果', '🥭')
+console.log(conver('我最喜欢吃的水果是香蕉和草莓', trie))
 // => '我最喜欢吃的水果是🍌和🍓'
 ```

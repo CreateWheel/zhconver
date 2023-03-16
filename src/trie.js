@@ -19,11 +19,19 @@ export class Trie {
   }
 
   /**
-   * Insert a word into the dictionary tree
-   * @param { string } key Key to be inserted
-   * @param { string } value Value to be inserted
+   * Set a word into the dictionary tree
+   * @param { string } key Key to be seted
+   * @param { string } value Value to be seted
    */
-  insert(key, value) {
+  set(key, value) {
+    return this.add(key, value)
+  }
+  /**
+   * Add a word into the dictionary tree
+   * @param { string } key Key to be added
+   * @param { string } value Value to be added
+   */
+  add(key, value) {
     const array = ArrayFrom(key)
     let node = this.root
     for (let i = 0; i < array.length; i++) {
@@ -34,15 +42,16 @@ export class Trie {
     node.end = true
     node.k = key
     node.v = value
+    return this
   }
 
   /**
    * Find words in an array of strings that match in a dictionary tree
    * @param { string[] } text An array of strings
-   * @param { number } startIndex Index to start the search
+   * @param { number } startIndex Index to start the find
    * @returns { [number,string,string] } Back to words
    */
-  search(text, startIndex = 0) {
+  find(text, startIndex = 0) {
     let node = this.root
     const textLen = text.length
     const phrases = []

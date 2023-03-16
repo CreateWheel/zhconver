@@ -9,19 +9,19 @@ export { Trie } from './trie'
  * @example
  * ```js
  * const trie = new Trie();
- * trie.insert("香蕉", "🍌");
- * trie.insert("草莓", "🍓");
- * trie.insert("芒果", "🥭");
+ * trie.add("香蕉", "🍌");
+ * trie.add("草莓", "🍓");
+ * trie.add("芒果", "🥭");
  * console.log(conver("我最喜欢吃的水果是香蕉和草莓", trie));
  * // => '我最喜欢吃的水果是🍌和🍓'
  * ```
  */
 export function conver(chars, instance) {
   const array = ArrayFrom(chars)
-  const wordLen = array.length
+  const arrayLen = array.length
   const replaceChars = []
-  for (let i = 0; i < wordLen; i++) {
-    const [index, key, value] = instance.search(array, i)
+  for (let i = 0; i < arrayLen; i++) {
+    const [index, key, value] = instance.find(array, i)
     // Re-indexing, in order to avoid duplication of text that has already been judged, thus improving performance
     i = index
     if (key) replaceChars.push([key, value])
